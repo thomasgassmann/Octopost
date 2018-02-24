@@ -1,0 +1,37 @@
+<mat-expansion-panel #expansionPanel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <mat-icon class="left--icon">comment</mat-icon>
+      <div *ngIf="currentCommentPreview">
+        <strong>{{currentCommentPreview.created | date}} {{currentCommentPreview.created | date:'shortTime'}} in {{currentCommentPreview.locationName}}: </strong>{{currentCommentPreview.text}}
+      </div>
+      <div *ngIf="!currentCommentPreview">
+        Comment Section
+      </div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-grid-list cols="10" rowHeight="30px">
+    <mat-grid-tile [colspan]="1">
+      <button mat-button [disabled]="isLoading" class="comment--button" (click)="reloadComments()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="8">
+      <mat-form-field style="width: 100%">
+        <input matInput style="width: 100%" placeholder="Add comment..." [(ngModel)]="commentText" (keyup)="$event.keyCode == 13 ? comment() : null" />
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">
+      <button mat-button (click)="comment()">Add</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div *ngIf="shownComments.length > 0" class="post--text">
+      <div *ngFor="let comment of shownComments; let i = index; trackBy: trackByFn" class="comment--text">
+        <strong>{{comment.created | date}} {{comment.created | date:'shortTime'}} in {{comment.locationName}}: </strong>{{comment.text}}
+      </div>
+      <div class="progress--bar">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+      </div>
+      <button mat-button [disabled]="isLoading" class="comment--button" *ngIf="showLoadMoreButton" (click)="loadMore()">Load more</button>
+  </div>
+</mat-expansion-panel>

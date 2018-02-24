@@ -1,0 +1,67 @@
+.post--card {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.title--container {
+    width: 100%;
+    display: flex;
+}
+
+.left {
+    width: 50%;
+    margin-right: auto;
+    text-align: left;
+}
+
+.right {
+    width: 50%;
+    margin-left: auto;
+    text-align: right;
+    margin-right: 15px;
+}
+
+.full--width {
+    width: 100% !important;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.post--text {
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
+.voting--area {
+    margin: 5px 0;
+}
+
+.progress--bar {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment--button {
+    margin-top: 1px;
+    margin-bottom: 5px;
+}
+
+.comment--text {
+    font-size: 13px;
+}
+
+.left--icon {
+    margin-right: 15px;
+}
+
+.file--content {
+    margin-bottom: 5px;
+}

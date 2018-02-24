@@ -1,0 +1,8 @@
+{
+  "name": "Octopost.Mobile",
+  "app_id": "98caca53",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

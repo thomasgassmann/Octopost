@@ -1,0 +1,42 @@
+<div>
+    <mat-toolbar color="primary">
+        <div class="icon">
+            <img src="/octopost/assets/img/octopost.png" alt="octopost" height="42" width="42">
+        </div>
+        <span>Octopost</span>
+    </mat-toolbar>
+    <div class="octopost--create">
+        <button mat-button (click)="showDialog()">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-button [disabled]="isRefreshing" (click)="refresh()">
+            <mat-icon>refresh</mat-icon>
+        </button>
+    </div>
+    <mat-tab-group #tabGroup class="tab--group">
+        <mat-tab label="Newest">
+            <app-newest-posts #newest>
+            </app-newest-posts>
+        </mat-tab>
+        <mat-tab label="Popular">
+            <app-popular-posts #popular>
+            </app-popular-posts>
+        </mat-tab>
+        <mat-tab label="Close to me">
+            <app-location-posts #byLocation>
+            </app-location-posts>
+        </mat-tab>
+        <mat-tab label="By Tag">
+            <app-tagged-posts #byTag>
+            </app-tagged-posts>
+        </mat-tab>
+        <mat-tab label="By Date">
+            <app-date-posts #byDate>
+            </app-date-posts>
+        </mat-tab>
+        <mat-tab label="By Query">
+            <app-query-posts #byQuery>
+            </app-query-posts>
+        </mat-tab>
+    </mat-tab-group>
+</div>

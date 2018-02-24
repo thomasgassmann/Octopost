@@ -1,0 +1,39 @@
+<h3 class="dialog--text" md-dialog-title>Add file to post</h3>
+<mat-dialog-content>
+  <mat-tab-group #tabGroup>
+    <mat-tab label="Picture" [disabled]="true">
+      <div class="content">
+
+      </div>
+    </mat-tab>
+    <mat-tab label="Video" [disabled]="true">
+      <div class="content">
+        
+      </div>
+    </mat-tab>
+    <mat-tab label="Audio" [disabled]="true">
+      <div class="content">
+
+      </div>
+    </mat-tab>
+    <mat-tab label="Other">
+      <div class="content">
+        <input #fileInput type="file" hidden />
+        <button [disabled]="isLoading" type="button" mat-raised-button (click)="selectFile()">
+          <mat-icon>file_upload</mat-icon>
+        </button>
+        <span>{{otherFileName}}</span>
+      </div>
+    </mat-tab>
+    <mat-tab label="From URL">
+      <mat-form-field class="url--input">
+        <input class="url--input" type="url" [(ngModel)]="UrlInput" matInput placeholder="URL to file">
+      </mat-form-field>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <mat-progress-bar *ngIf="isLoading" class="progress--bar" mode="indeterminate"></mat-progress-bar>
+  <button mat-button [disabled]="isLoading" (click)="save()">Create</button>
+  <button mat-button [disabled]="isLoading" (click)="cancel()">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,22 @@
+.octopost--create--buttons {
+    display: inline-block;
+}
+
+.octopost--create--buttons--container {
+    text-align: right;
+}
+
+mat-progress-spinner {
+    height: 36px;
+    display: inline-block;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 150px;
+}
+
+.full--width {
+    width: 100%;
+}

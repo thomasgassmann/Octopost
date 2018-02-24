@@ -1,0 +1,29 @@
+<div>
+  <h3 class="dialog--text" md-dialog-title>{{file.fileName}}</h3>
+  <h5 class="dialog--text" md-dialog-title>{{file.created | date}} - {{file.contentType}}</h5>
+  <hr>
+  <mat-dialog-content>
+    <div *ngIf="isImage">
+      <img src="{{fileUrl}}" style="width: 100%" />
+    </div>
+    <div *ngIf="isVideo">
+      <video controls style="width: 100%">
+        <source src="{{fileUrl}}" type="{{file.contentType}}">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div *ngIf="isAudio">
+      <audio controls style="width: 100%">
+        <source src="{{fileUrl}}" type="{{file.contentType}}">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div *ngIf="isOther">
+      <a mat-button href="{{fileUrl}}">Open</a>
+    </div>
+  </mat-dialog-content>
+  <hr>
+  <mat-dialog-actions>
+      <button mat-button (click)="close()">Close</button>
+  </mat-dialog-actions>
+</div>

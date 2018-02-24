@@ -1,0 +1,15 @@
+.dialog--text {
+    font-family: Roboto;
+}
+
+.progress--bar {
+    margin-bottom: 5px;
+}
+
+.content {
+    margin: 10px;
+}
+
+.url--input {
+    width: 100%;
+}

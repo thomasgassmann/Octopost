@@ -1,0 +1,12 @@
+<div class="post--container--component">
+    <div class="post--container" *ngFor="let post of shownPosts; let i = index; trackBy: trackByFn">
+        <app-post class="single--post" [post]="post" [index]="i">
+        </app-post>
+    </div>
+    <div *ngIf="nothingToShow">
+        <p>Nothing to show</p>
+    </div>
+    <div div="loading--container" *ngIf="!endOfList">
+        <mat-progress-spinner class="loading" mode="indeterminate"></mat-progress-spinner>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="post--card">
+  <mat-card>
+    <div class="full--width">
+      <mat-card-title class="full--width">
+        <div class="title--container full--width">
+          <div class="left">{{post.topic | postTagName}}</div>
+          <div *ngIf="post.voteCount > 0">
+            <div class="right green">{{post.voteCount | prefixNumber}}</div>
+          </div>
+          <div *ngIf="post.voteCount <= 0">
+            <div class="right red">{{post.voteCount | prefixNumber}}</div>
+          </div>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{post.created | date}} | {{post.locationName}}
+      </mat-card-subtitle>
+    </div>
+    <mat-card-content>
+      <div class="file--content">
+        <app-post-file *ngIf="post.file && !isAudio" [post]="post">
+        </app-post-file>
+        <audio controls style="width: 100%" *ngIf="isAudio">
+            <source src="{{fileUrl}}" type="{{post.file.contentType}}">
+            Your browser does not support the audio element.
+        </audio>
+      </div>
+      <div class="post--text">
+        {{post.text.toString()}}
+      </div>
+      <div class="voting--area">
+        <button mat-button [disabled]="voted" (click)="downvote()">
+          <mat-icon>thumb_down</mat-icon>
+        </button>
+        <button mat-button [disabled]="voted" (click)="upvote()">
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+      </div>
+      <app-comments [post]="post">
+      </app-comments>
+    </mat-card-content>
+  </mat-card>
+</div>

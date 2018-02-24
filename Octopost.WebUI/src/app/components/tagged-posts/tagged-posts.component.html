@@ -1,0 +1,17 @@
+<div class="tag--selector">
+    <mat-form-field class="tag--selection">
+        <mat-select placeholder="Tags" multiple [(ngModel)]="selectedValue">
+            <mat-select-trigger>
+                <mat-chip-list>
+                    <mat-chip color="primary" selected="true" [selectable]="true" [removable]="true" *ngFor="let val of selectedValue" (remove)="remove(val)">
+                        {{labels[val]}}
+                        <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-select-trigger>
+            <mat-option *ngFor="let val of values" [value]="val">{{labels[val]}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<app-post-container [isActive]="isActive" [fetchRequest]="fetchRequest" #postContainer>
+</app-post-container>

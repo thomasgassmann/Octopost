@@ -1,0 +1,13 @@
+.octopost--create {
+    padding: 5px 5px;
+    background-color: #CFD8DC;    
+}
+
+.icon {
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+ .app--header {
+    position: fixed;
+}

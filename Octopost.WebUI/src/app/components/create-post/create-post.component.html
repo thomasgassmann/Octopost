@@ -1,0 +1,39 @@
+<mat-form-field class="full--width">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <br />
+  <textarea matInput placeholder="Post text" [(ngModel)]="postText" (keyup)="$event.ctrlKey && $event.keyCode == 13 ? createPost() : null"></textarea>
+</mat-form-field>
+<div>
+  <table>
+    <tr>
+      <td>
+        <button [disabled]="isLoading" mat-fab color="primary" (click)="addFile()">
+          <div *ngIf="fileId">
+            {{fileId}}
+          </div>
+          <div *ngIf="!fileId">
+            <mat-icon>add</mat-icon>
+          </div>
+        </button>
+      </td>
+      <td>
+        <div *ngIf="fileId">
+          <button [disabled]="isLoading" mat-fab color="warn" (click)="removeFile()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+      <td>
+        <div *ngIf="fileId">
+          <button [disabled]="isLoading" mat-fab color="primary" (click)="onFilePreview()">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="octopost--create--buttons--container">
+  <button class="octopost--create--buttons" [disabled]="isLoading" mat-raised-button (click)="closeDialog()">Cancel</button>
+  <button class="octopost--create--buttons" [disabled]="isLoading" mat-raised-button color="primary" (click)="createPost()">Create</button>
+</div>
