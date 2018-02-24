@@ -29,7 +29,7 @@ Execute the following command in `Octopost.WebUI`:
 > ng serve
 
 ## Run Mobile App (unfinished)
-Execute the following command in `Octopost.Mobile`:
+Execute the following command in `Octopost.MobileApp`:
 > ionic serve
 
 ## Build the Web UI
