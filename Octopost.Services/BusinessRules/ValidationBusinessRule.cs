@@ -5,6 +5,7 @@
     using Octopost.Services.Exceptions;
     using Octopost.Services.UoW;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ValidationBusinessRule : IBusinessRuleBase
     {
@@ -19,12 +20,7 @@
 
         public void PreSave(IList<object> added, IList<object> updated, IList<object> removed)
         {
-            foreach (var item in added)
-            {
-                this.ValidateObjectAndThrow(item);
-            }
-
-            foreach (var item in updated)
+            foreach (var item in added.Concat(updated))
             {
                 this.ValidateObjectAndThrow(item);
             }

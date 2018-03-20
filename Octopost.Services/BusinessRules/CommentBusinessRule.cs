@@ -1,5 +1,6 @@
 ﻿namespace Octopost.Services.BusinessRules
 {
+    using Microsoft.EntityFrameworkCore;
     using Octopost.Model.ApiResponse.HTTP400;
     using Octopost.Model.Data;
     using Octopost.Model.Validation;
@@ -10,20 +11,16 @@
 
     public class CommentBusinessRule : BusinessRuleBase<Comment>
     {
-        private readonly IUnitOfWorkFactory unitOfWorkFactory;
+        private readonly IQueryService queryService;
 
-        public CommentBusinessRule(IUnitOfWorkFactory unitOfWorkFactory)
-        {
-            this.unitOfWorkFactory = unitOfWorkFactory;
-        }
+        public CommentBusinessRule(IQueryService queryService) =>
+            this.queryService = queryService;
 
         public override void PreSave(IList<Comment> added, IList<Comment> updated, IList<Comment> removed)
         {
-            var unitOfWork = this.unitOfWorkFactory.CreateUnitOfWork();
-            var postRepository = unitOfWork.CreateEntityRepository<Post>();
             foreach (var item in added)
             {
-                if (!postRepository.Query().Any(x => x.Id == item.PostId))
+                if (!queryService.Query<Post>().AsNoTracking().Any(x => x.Id == item.PostId))
                 {
                     throw new ApiException(x => x.BadRequestResult(
                         (ErrorCode.Parse(ErrorCodeType.InvalidReferenceId, OctopostEntityName.Comment, PropertyName.Comment.PostId, OctopostEntityName.Post),
