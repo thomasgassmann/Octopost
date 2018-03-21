@@ -7,10 +7,6 @@ class ErrorDefinition {
 }
 
 class BadRequest extends Request {
-    constructor() {
-        super();
-    }
-
     errors: ErrorDefinition[] | undefined = undefined;
 }
 
